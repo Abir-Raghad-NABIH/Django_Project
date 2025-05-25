@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <title>Plateforme de Voyages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+
+<nav class="bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 shadow-lg">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <div>
+      {% if user.is_authenticated %}
+        <a href="{% url 'catalogue' %}" class="text-white text-2xl font-extrabold tracking-wide hover:text-purple-300 transition">Voyages</a>
+      {% else %}
+        <a href="/" class="text-white text-2xl font-extrabold tracking-wide hover:text-purple-300 transition">Voyages</a>
+      {% endif %}
+    </div>
+
+    <button id="menu-btn" aria-label="Toggle menu" class="md:hidden text-white focus:outline-none">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+           xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round"
+           d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+
+    <ul id="menu" class="hidden md:flex space-x-8 text-white font-semibold tracking-wide">
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}" class="hover:text-purple-300 transition">Mon Profil</a></li>
+        {% if user.is_superuser %}
+          <li><a href="/admin/" class="hover:text-purple-300 transition">Admin</a></li>
+          <li><a href="/api/" class="hover:text-purple-300 transition">API</a></li>
+        {% else %}
+          <li><a href="{% url 'historique_reservations' %}" class="hover:text-purple-300 transition">Mes Voyages</a></li>
+          <li><a href="{% url 'gestion_documents' %}" class="hover:text-purple-300 transition">Mes documents</a></li>
+          <li>
+            <a href="{% url 'mes_notifications' %}" class="relative hover:text-purple-300 transition flex items-center">
+              Notifications
+              {% if nb_notif > 0 %}
+                <span class="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-white bg-pink-600 rounded-full shadow-lg">
+                  {{ nb_notif }}
+                </span>
+              {% endif %}
+            </a>
+          </li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}" class="hover:text-purple-300 transition">Déconnexion</a></li>
+      {% else %}
+        {% comment %} <li><a href="{% url 'login' %}" class="hover:text-purple-300 transition">Connexion</a></li>
+        <li><a href="{% url 'register' %}" class="hover:text-purple-300 transition">Inscription</a></li> {% endcomment %}
+      {% endif %}
+    </ul>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="md:hidden bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 hidden px-6 pb-6">
+    <ul class="flex flex-col space-y-4 text-white font-semibold tracking-wide">
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}" class="block hover:text-purple-300 transition">Mon Profil</a></li>
+        {% if user.is_superuser %}
+          <li><a href="/admin/" class="block hover:text-purple-300 transition">Admin</a></li>
+          <li><a href="/api/" class="block hover:text-purple-300 transition">API</a></li>
+        {% else %}
+          <li><a href="{% url 'historique_reservations' %}" class="block hover:text-purple-300 transition">Mes Voyages</a></li>
+          <li><a href="{% url 'gestion_documents' %}" class="block hover:text-purple-300 transition">Mes documents</a></li>
+          <li>
+            <a href="{% url 'mes_notifications' %}" class="relative hover:text-purple-300 transition flex items-center">
+              Notifications
+              {% if nb_notif > 0 %}
+                <span class="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-white bg-pink-600 rounded-full shadow-lg">
+                  {{ nb_notif }}
+                </span>
+              {% endif %}
+            </a>
+          </li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}" class="block hover:text-purple-300 transition">Déconnexion</a></li>
+      {% else %}
+        {% comment %} <li><a href="{% url 'login' %}" class="block hover:text-purple-300 transition">Connexion</a></li>
+        <li><a href="{% url 'register' %}" class="block hover:text-purple-300 transition">Inscription</a></li> {% endcomment %}
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<main class="container mx-auto px-6 py-10 flex-grow">
+  {% block content %}
+  {% endblock %}
+</main>
+
+<footer class="bg-gradient-to-r from-purple-900 via-purple-800 to-pink-700 text-white text-center py-2 mt-auto shadow-inner">
+  &copy; {{ now.year }} Plateforme de Voyages - Tous droits réservés
+</footer>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Plateforme de Voyages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    {% if user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'catalogue' %}">Voyages</a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        {% if user.is_authenticated %}
+          <!-- Lien commun aux admins et voyageurs -->
+          <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Mon Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'gestion_documents' %}">Mes documents</a></li> {% endcomment %}
+          {% comment %} {% if user.is_superuser %}
+            <!-- Liens spécifiques admin -->
+            <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="/api/">Api</a></li>
+          {% else %}
+            <!-- Liens spécifiques voyageur -->
+            <li class="nav-item"><a class="nav-link" href="{% url 'historique_reservations' %}">Mes Voyages</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'gestion_documents' %}">Mes documents</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'mes_notifications' %}">
+                Notifications
+                {% if nb_notif > 0 %}
+                  <span class="badge bg-danger">{{ nb_notif }}</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endif %}
+
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+        {% else %} {% endcomment %}
+          <!-- Utilisateur non connecté -->
+          {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Connexion</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Inscription</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav> {% endcomment %}
+
+
+
+{% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    {% if user.is_authenticated %}
+    <a class="navbar-brand" href="{% url 'catalogue' %}">Voyages</a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Mon Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'gestion_documents' %}">Mes documents</a></li>
+          {% if user.is_superuser %}
+            <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="/api/">Api</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'historique_reservations' %}">Mes Voyages</a></li>
+                        <li class="nav-item">
+                <a class="nav-link" href="{% url 'mes_notifications' %}">
+                    Notifications
+                    {% if nb_notif > 0 %}
+                        <span class="badge bg-danger">{{ nb_notif }}</span>
+                    {% endif %}
+                </a>
+            </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+            
+          {% endif %}
+        {% if user.is_authenticated %}
+            
+
+        {% endif %}
+
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Connexion</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Inscription</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav> {% endcomment %}
+
+
+{% comment %} <div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> {% endcomment %}

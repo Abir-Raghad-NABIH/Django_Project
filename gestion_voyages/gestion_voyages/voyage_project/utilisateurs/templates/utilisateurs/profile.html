@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-8">
+  <h2 class="text-3xl font-extrabold text-purple-800 mb-6">Profil de {{ profile.user.username }}</h2>
+  
+  <div class="mb-6">
+    <h3 class="text-xl font-semibold text-gray-700 mb-2">Préférences</h3>
+    <p class="text-gray-800 whitespace-pre-line">{{ profile.preferences|default:"Aucune préférence renseignée." }}</p>
+  </div>
+
+  {% if profile.documents %}
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold text-gray-700 mb-2">Documents</h3>
+      <a href="{{ profile.documents.url }}" target="_blank" class="text-purple-700 hover:text-purple-900 underline">
+        Voir le document
+      </a>
+    </div>
+  {% endif %}
+
+  {% if user.is_superuser %}
+    <div class="mb-6 p-4 bg-purple-100 border border-purple-300 rounded text-purple-800 font-semibold">
+      Vous êtes connecté en tant qu’administrateur.
+    </div>
+  {% endif %}
+
+  <a href="{% url 'logout' %}" class="inline-block mt-4 px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded transition">
+    Se déconnecter
+  </a>
+</div>
+{% endblock %}

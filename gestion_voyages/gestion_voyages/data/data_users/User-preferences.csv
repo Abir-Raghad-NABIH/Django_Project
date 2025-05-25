@@ -1,0 +1,4 @@
+"user (User)","preferences","documents"
+"user: jean_dupont","""Préférence : voyage en montagne""","""documents/jean_id.pdf"""
+"user: marie_durand","""Aime les plages et les croisières""","null"
+"user: paul_martin",""""" (champ vide)","""documents/paul_passport.pdf"""

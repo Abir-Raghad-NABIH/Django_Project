@@ -1,0 +1,262 @@
+[
+  {
+    "model": "myapp.destination",
+    "pk": 1,
+    "fields": {
+      "nom": "Paris",
+      "description": "Ville lumière, capitale de la France, riche en histoire et culture.",
+      "image": "destinations/paris.jpg"
+    }
+  },
+  {
+    "model": "myapp.destination",
+    "pk": 2,
+    "fields": {
+      "nom": "Rome",
+      "description": "Capitale italienne célèbre pour ses ruines antiques et sa gastronomie.",
+      "image": "destinations/rome.jpg"
+    }
+  },
+  {
+    "model": "myapp.destination",
+    "pk": 3,
+    "fields": {
+      "nom": "Bali",
+      "description": "Île indonésienne paradisiaque avec plages et rizières.",
+      "image": "destinations/bali.jpg"
+    }
+  },
+  {
+    "model": "myapp.destination",
+    "pk": 4,
+    "fields": {
+      "nom": "New York",
+      "description": "Ville cosmopolite, connue pour sa skyline et Broadway.",
+      "image": "destinations/newyork.jpg"
+    }
+  },
+  {
+    "model": "myapp.destination",
+    "pk": 5,
+    "fields": {
+      "nom": "Tokyo",
+      "description": "Métropole japonaise alliant modernité et traditions.",
+      "image": "destinations/tokyo.jpg"
+    }
+  },
+  {
+    "model": "myapp.destination",
+    "pk": 6,
+    "fields": {
+      "nom": "Le Cap",
+      "description": "Ville sud-africaine entre montagnes et océan.",
+      "image": "destinations/lecap.jpg"
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 1,
+    "fields": {
+      "destination": 1,
+      "titre": "Découverte de Paris",
+      "description": "Circuit culturel pour découvrir les monuments clés.",
+      "image_principale": "circuits/paris1.jpg",
+      "itineraire": "Jour 1 : Visite du Louvre et promenade sur les quais de la Seine
+                     Jour 2 : Tour Eiffel, Champs-Élysées et Arc de Triomphe
+                     Jour 3 : Montmartre, Basilique du Sacré-Cœur et soirée au Moulin Rouge",
+      "points_interet": "Louvre, Tour Eiffel, Montmartre",
+      "duree": 3
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 2,
+    "fields": {
+      "destination": 2,
+      "titre": "Rome antique et Renaissance",
+      "description": "Visite des sites antiques et des œuvres d'art.",
+      "image_principale": "circuits/rome1.jpg",
+      "itineraire": "Jour 1 : Colisée, Forum Romain et Palatin
+                     Jour 2 : Vatican (Musées, Chapelle Sixtine, Basilique Saint-Pierre)
+                     Jour 3 : Fontaine de Trevi, Place d’Espagne, Panthéon
+                     Jour 4 : Trastevere et dégustation de spécialités locales",
+      "points_interet": "Colisée, Vatican, Fontaine de Trevi",
+      "duree": 4
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 3,
+    "fields": {
+      "destination": 3,
+      "titre": "Aventure balinaise",
+      "description": "Découverte des plages, rizières et temples.",
+      "image_principale": "circuits/bali1.jpg",
+      "itineraire": "Jour 1 : Plage de Kuta et coucher de soleil à Tanah Lot
+                     Jour 2 : Visite d’Ubud, rizières en terrasses et marché artisanal
+                     Jour 3 : Temple Besakih et sources chaudes de Toya Bungkah
+                     Jour 4 : Randonnée au Mont Batur au lever du soleil
+                     Jour 5 : Détente à la plage de Nusa Dua",
+      "points_interet": "Plages, Temples, Rizières",
+      "duree": 5
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 4,
+    "fields": {
+      "destination": 4,
+      "titre": "New York en 5 jours",
+      "description": "Tour complet des quartiers emblématiques.",
+      "image_principale": "circuits/ny1.jpg",
+      "itineraire": "Jour 1 : Central Park, Musée d’Histoire Naturelle et Times Square
+                     Jour 2 : Statue de la Liberté, Ellis Island et Wall Street
+                     Jour 3 : Brooklyn Bridge, quartier de Brooklyn et Dumbo
+                     Jour 4 : Empire State Building, 5th Avenue et Rockefeller Center
+                     Jour 5 : Broadway et visite du MoMA",
+      "points_interet": "Central Park, Statue de la Liberté, Broadway",
+      "duree": 5
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 5,
+    "fields": {
+      "destination": 5,
+      "titre": "Tokyo traditionnel et moderne",
+      "description": "Alternance entre quartiers modernes et anciens.",
+      "image_principale": "circuits/tokyo1.jpg",
+      "itineraire": "Jour 1 : Quartier Shibuya, croisement célèbre et shopping
+		     Jour 2 : Temple Senso-ji à Asakusa et balade dans Nakamise-dori
+		     Jour 3 : Akihabara, quartier de l’électronique et manga
+		     Jour 4 : Palais impérial et jardins de Hamarikyu",
+      "points_interet": "Shibuya, Temple Senso-ji, Akihabara",
+      "duree": 4
+    }
+  },
+  {
+    "model": "myapp.circuit",
+    "pk": 6,
+    "fields": {
+      "destination": 6,
+      "titre": "Nature et culture au Cap",
+      "description": "Exploration de la nature et de la culture locale.",
+      "image_principale": "circuits/lecap1.jpg",
+      "itineraire": "Jour 1 : Ascension de la Table Mountain et visite du centre-ville
+		     Jour 2 : Excursion à Robben Island, musée de l’apartheid
+		     Jour 3 : V&A Waterfront, aquarium et shopping
+		     Jour 4 : Route des vins et dégustation dans les vignobles
+		     Jour 5 : Plage de Camps Bay et coucher de soleil",
+      "points_interet": "Table Mountain, Robben Island, V&A Waterfront",
+      "duree": 3
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 1,
+    "fields": {
+      "circuit": 1,
+      "date_depart": "2025-06-15",
+      "disponibilites": 20
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 2,
+    "fields": {
+      "circuit": 2,
+      "date_depart": "2025-07-01",
+      "disponibilites": 15
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 3,
+    "fields": {
+      "circuit": 3,
+      "date_depart": "2025-08-10",
+      "disponibilites": 10
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 4,
+    "fields": {
+      "circuit": 4,
+      "date_depart": "2025-09-05",
+      "disponibilites": 25
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 5,
+    "fields": {
+      "circuit": 5,
+      "date_depart": "2025-10-12",
+      "disponibilites": 18
+    }
+  },
+  {
+    "model": "myapp.depart",
+    "pk": 6,
+    "fields": {
+      "circuit": 6,
+      "date_depart": "2025-11-20",
+      "disponibilites": 12
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 1,
+    "fields": {
+      "circuit": 1,
+      "nom": "Guide privé",
+      "prix": "150.00"
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 2,
+    "fields": {
+      "circuit": 1,
+      "nom": "Dîner gastronomique",
+      "prix": "80.00"
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 3,
+    "fields": {
+      "circuit": 2,
+      "nom": "Visite nocturne Colisée",
+      "prix": "50.00"
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 4,
+    "fields": {
+      "circuit": 3,
+      "nom": "Excursion plongée",
+      "prix": "120.00"
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 5,
+    "fields": {
+      "circuit": 4,
+      "nom": "Billet Broadway",
+      "prix": "100.00"
+    }
+  },
+  {
+    "model": "myapp.option",
+    "pk": 6,
+    "fields": {
+      "circuit": 5,
+      "nom": "Transport privé",
+      "prix": "70.00"
+    }
+  }
+]

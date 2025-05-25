@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+  <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Mes notifications</h2>
+
+  <ul class="divide-y divide-gray-200">
+    {% for notif in notifications %}
+      <li class="py-4 px-6 {% if not notif.lu %}bg-purple-50 border-l-4 border-purple-600{% else %}bg-white{% endif %} rounded-md mb-3 shadow-sm">
+        <strong class="block text-lg text-gray-800 mb-1">{{ notif.sujet }}</strong>
+        <p class="text-gray-700 whitespace-pre-line mb-2">{{ notif.message }}</p>
+        <div class="text-gray-500 text-sm italic">{{ notif.date_envoi|date:"d/m/Y H:i" }}</div>
+      </li>
+    {% empty %}
+      <li class="py-4 px-6 bg-gray-100 rounded-md text-center text-gray-500 italic">Aucune notification.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
